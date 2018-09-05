@@ -17,7 +17,7 @@ class CreateProjectsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->text('description');
-            $table->tinyInteger('statuses');
+            $table->string('statuses', 50);
             $table->timestamps();
         });
     }

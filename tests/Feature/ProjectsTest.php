@@ -19,7 +19,7 @@ class ProjectsTest extends TestCase
         $filled = [
             'name' => 'Name Project',
             'description' => 'Description',
-            'statuses' => 2,
+            'statuses' => 'planned',
         ];
 
         $this->json('POST', '/api/projects/store', $filled, $headers)
@@ -27,7 +27,7 @@ class ProjectsTest extends TestCase
             ->assertJson([
                 'name' => 'Name Project',
                 'description' => 'Description',
-                'statuses' => 2,
+                'statuses' => 'planned',
             ]);
     }
 
@@ -41,7 +41,7 @@ class ProjectsTest extends TestCase
         $update = [
             'name' => 'Name Project',
             'description' => 'Description',
-            'statuses' => 2,
+            'statuses' => 'planned',
         ];
 
         $this->json('PUT', '/api/projects/update/' . $client->id, $update, $headers)
@@ -49,7 +49,7 @@ class ProjectsTest extends TestCase
             ->assertJson([
                 'name' => 'Name Project',
                 'description' => 'Description',
-                'statuses' => 2,
+                'statuses' => 'planned',
             ]);
     }
 

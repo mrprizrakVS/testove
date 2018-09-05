@@ -33,11 +33,10 @@ $factory->define(App\Models\Clients::class, function (Faker\Generator $faker) {
     ];
 });
 $factory->define(App\Models\Projects::class, function (Faker\Generator $faker) {
-    static $password;
 
     return [
         'name' => $faker->name,
         'description' => $faker->text,
-        'statuses' => 2,
+        'statuses' => 'planned',
     ];
 });

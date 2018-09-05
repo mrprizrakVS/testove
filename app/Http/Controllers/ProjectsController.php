@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Projects;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ProjectsController extends Controller
 {
@@ -18,6 +19,17 @@ class ProjectsController extends Controller
     }
 
     public function store(Request $request){
+        $rules = [
+            'name' => 'required',
+            'description' => 'required',
+            'statuses' => 'required',
+        ];
+        $validation = Validator::make($request->all(), $rules);
+
+        if($validation->fails()){
+            return response()->json([], 422);
+        }
+
         $Projects = Projects::create($request->all());
         return response()->json($Projects, 201);
     }
